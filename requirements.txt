@@ -1,0 +1,11 @@
+--extra-index-url https://download.pytorch.org/whl/cpu
+torch==2.1.0+cpu 
+fastapi
+unstructured[pdf]
+uvicorn
+pydantic
+langchain
+qdrant-client
+llama-cpp-python
+langchain
+sentence-transformers
