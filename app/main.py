@@ -57,7 +57,7 @@ def get_files():
 def get_qdrant_client():
     qdrant = Qdrant.from_documents(
         get_files(),
-        SentenceTransformerEmbeddings(model_name="./app/sbert/paraphrase-multilingual-MiniLM-L12-v2", model_kwargs={'device': 'cpu'}),
+        SentenceTransformerEmbeddings(model_name="sentence-transformers/paraphrase-multilingual-MiniLM-L12-v2", model_kwargs={'device': 'cpu'}),
         location=":memory:",  # Local mode with in-memory storage only
         #path="./code/vector_base",
         collection_name="vector_base",
