@@ -9,3 +9,4 @@ qdrant-client
 llama-cpp-python
 langchain
 sentence-transformers
+huggingface-hub
