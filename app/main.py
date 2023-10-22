@@ -1,6 +1,7 @@
 from fastapi import FastAPI
 from pydantic import BaseModel
 import qdrant_client
+from huggingface_hub import hf_hub_download
 from langchain.text_splitter import CharacterTextSplitter
 from langchain.vectorstores import Qdrant
 from langchain.document_loaders import UnstructuredPDFLoader, CSVLoader
@@ -9,6 +10,15 @@ from langchain.llms import LlamaCpp
 from langchain.schema.runnable import RunnablePassthrough
 from langchain.embeddings.sentence_transformer import SentenceTransformerEmbeddings
 import os
+
+print("Подгружаем модели...")
+
+hf_hub_download(
+    repo_id="TheBloke/Llama-2-7b-Chat-GGUF",
+    filename="llama-2-7b-chat.Q4_K_M.gguf",
+    local_dir="./app/",
+    local_dir_use_symlinks=False
+)
 
 rag_prompt_custom = PromptTemplate.from_template("""Используй следующие фрагменты документов для ответа на вопрос в конце.
 Если ты не знаешь ответа, то просто скажи, что ты не знаешь, не пытайся придумать ответ.
